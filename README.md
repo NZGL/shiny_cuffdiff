@@ -1,2 +1,2 @@
-# shiny_gene_expression_panel
+# shiny_cuffdiff
 Shiny code to interrogate cuffdiff gene expression results and produce gene information and plots
