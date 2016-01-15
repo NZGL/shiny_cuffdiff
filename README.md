@@ -1,5 +1,5 @@
 # shiny
-Shiny code. Please put individual Shiny projects in informatively named subdirectories, and update this README with a description.
+Shiny code (please put individual Shiny apps in informative subdirectories, and put a brief description in the README.md)
 
 <b>gene_expression_panel:</b>
 
