@@ -9,12 +9,13 @@ shinyServer(function(input, output) {
 # This section defines a CuffGeneSet for a specific gene which is used in the subsequent display steps
 # This is to avoid re-loading the CuffGeneSet many times
   
-  my_gene <- reactive({
+  my_genes <- reactive({
     mycufflinksdata <- readCufflinks(dir =  input$cuffdiff_dir,
                                      genome = input$cuffdiff_genome, 
                                      gtfFile = input$cuffdiff_gtf,
                                      rebuild = input$rebuild)
-    getGenes(mycufflinksdata,input$gene_id)
+    mylist<-unlist(strsplit(input$gene_list, " "))
+    getGenes(mycufflinksdata,mylist)
     })
   
 # Now the CuffGeneSet is defined
@@ -24,106 +25,33 @@ shinyServer(function(input, output) {
 # Display the gene short name
 
    output$gsn <- renderText({
-      if (input$gene_id != "") {
-          paste("Gene short name: ", as.character(featureNames(my_gene())$gene_short_name))
+      if (input$gene_list != "") {
+          paste("Gene short name: ", as.character(featureNames(my_genes())$gene_short_name))
       }
     })
 
 # Display the XLOC_XXXXXX tracking ID
    
    output$id <- renderText({
-     if (input$gene_id != "") {
-       paste("Tracking ID : ", as.character(featureNames(my_gene())$tracking_id))
-     }
-   })
-   
-# Display the number of isoforms
-   
-   output$iso <- renderText({
-     if (input$gene_id != "") {
-       paste("Number of isoforms : ", as.character(length(isoforms(my_gene()))))
-     }
-   })
-   
-   
-# Display the number of TSS groups   
-   
-   output$tss <- renderText({
-     if (input$gene_id != "") {
-       paste("Number of transcription start sites : ", as.character(length(TSS(my_gene()))))
-     }
-   })
-
-# Display the number of cDNAs
-   
-   output$cds <- renderText({
-     if (input$gene_id != "") {
-       paste("Number of cDNAs: ", as.character(length(CDS(my_gene()))))
-     }
-   })
-   
-   output$rawplotdatagene <- renderTable({
-     if (input$gene_id != "") {
-       as.data.frame(fpkm(my_gene()))
-     }
-   })
-   
-   output$rawplotdataiso <- renderTable({
-     if (input$gene_id != "") {
-       as.data.frame(fpkm(isoforms(my_gene())))
-     }
-   })
-   
-# Display the conditions that were examined   
-   output$isoforminfo <- renderTable({
-     if (input$gene_id != "") {
-       as.data.frame(annotation(isoforms(my_gene())))
+     if (input$gene_list != "") {
+       paste("Tracking ID : ", as.character(featureNames(my_genes())$tracking_id))
      }
    })
   
 # The main panel displays tabbed expression plot of the gene and isoforms
-  output$expression_plot_primary_isoform <- renderPlot({
-    if (input$gene_id != "") {
-      if (input$plottype == 1) {
-        expressionPlot(my_gene(), replicates = input$reps)
-      }
-      else if (input$plottype == 2) {
-        expressionBarplot(my_gene(), replicates = input$reps)
-      }
+  output$heatmap <- renderPlot({
+    if (input$gene_list != "") {
+        csHeatmap(my_genes(), replicates = input$reps)
     }
     })
   
-  output$expression_plot_all_isoforms <- renderPlot({
-    if (input$gene_id != "") {
-      if (input$plottype == 1){
-      expressionPlot(isoforms(my_gene()), replicates = input$reps)
-      }
-      else if (input$plottype == 2){
-      expressionBarplot(isoforms(my_gene()), replicates = input$reps)
-      }
+  output$barplot <- renderPlot({
+    if (input$gene_list != "") {
+      expressionBarplot(my_genes(), replicates = input$reps)
     }
   })
   
-  output$expression_plot_all_TSS <- renderPlot({
-    if (input$gene_id != "") {
-      if (input$plottype == 1){
-        expressionPlot(TSS(my_gene()), replicates = input$reps)
-      }
-      else if (input$plottype == 2){
-        expressionBarplot(TSS(my_gene()), replicates = input$reps)
-      }
-    }
-  })
-  
-  output$expression_plot_all_CDS <- renderPlot({
-    if (input$gene_id != "") {
-      if (input$plottype == 1){
-        expressionPlot(CDS(my_gene()), replicates = input$reps)
-      }
-      else if (input$plottype == 2){
-        expressionBarplot(CDS(my_gene()), replicates = input$reps)
-      }
-    }
-  })
+
+
   
 })

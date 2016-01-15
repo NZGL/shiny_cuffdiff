@@ -1,40 +1,39 @@
 #!/bin/R
 
 shinyUI(fluidPage(
-  titlePanel("Gene expression plot"),
+  titlePanel("Multi-gene comparison plots"),
   
   sidebarLayout(
     sidebarPanel(
       textInput("cuffdiff_dir", label = "Full path to your Cuffdiff directory", value = "~/Dropbox/384/cuffdiff"),
-      checkboxInput("rebuild", label = "Rebuild cuffdiff database (very slow)", value = FALSE),
+      checkboxInput("rebuild", label
+                    = "Rebuild cuffdiff database (very slow)", value = FALSE),
       conditionalPanel(
         condition = "input.rebuild == true",
         textInput("cuffdiff_gtf", label = "Full path to your GTF file (optional, but recommended)"),
         textInput("cuffdiff_genome", label = "Genome name (Optional, free text)")
       ),
-      textInput("gene_id", label = "Gene short name or XLOC number", value = "HBB"),
-      radioButtons("plottype", label="Plot type", choices = list("Line" = 1, "Bar" = 2),
-                   selected = 1),
+      radioButtons("inputtype", "Input type:",
+                   c("List" = "list",
+                     "File" = "file")),
+      conditionalPanel(
+        condition = "input.inputtype == 'list'",
+        textInput("gene_list", label = "Gene list", value = "HBB ACTB")
+      ),
+      conditionalPanel(
+        condition = "input.inputtype == 'file'",
+        fileInput("gene_list_file", label = "Gene list file")
+      ),
       checkboxInput("reps", label="Include replicates ?", value = FALSE)
       ),
- 
- 
     sidebarPanel(strong("Gene information"),
                           textOutput("gsn"), 
-                          textOutput("id"),
-                          textOutput("iso"),
-                          textOutput("tss"),
-                          textOutput("cds"))
+                          textOutput("id"))
   ),
   
   mainPanel(position = "right",
     tabsetPanel(
-      tabPanel("Primary isoform",plotOutput("expression_plot_primary_isoform")),
-      tabPanel("All isoforms", plotOutput("expression_plot_all_isoforms")),
-      tabPanel("TSS groups",plotOutput("expression_plot_all_TSS")),
-      tabPanel("CDS groups", plotOutput("expression_plot_all_CDS")),
-      tabPanel("Raw plot data (Gene)", tableOutput("rawplotdatagene")),
-      tabPanel("Raw plot data (Isoforms)", tableOutput("rawplotdataiso")),
-      tabPanel("Isoform information", tableOutput("isoforminfo"))
+      tabPanel("Heatmap",plotOutput("heatmap")),
+      tabPanel("Barplot", plotOutput("barplot"))
     )
 )))
