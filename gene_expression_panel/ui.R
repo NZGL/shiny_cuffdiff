@@ -16,7 +16,7 @@ shinyUI(fluidPage(
       radioButtons("plottype", label="Plot type", choices = list("Line" = 1, "Bar" = 2),
                    selected = 1),
       checkboxInput("reps", label="Include replicates ?", value = FALSE),
-      submitButton(text = "Warp speed, Mr. LaForge!")
+      submitButton(text = "Plot!")
       ),
  
  

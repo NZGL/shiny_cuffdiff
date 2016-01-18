@@ -18,14 +18,14 @@ shinyUI(fluidPage(
                      "File" = "file")),
       conditionalPanel(
         condition = "input.inputtype == 'list'",
-        textInput("gene_list", label = "Gene list", value = "HBB ACTB")
+        textInput("gene_list", label = "Gene list: Use the gene short name (e.g. ACTB) or XLOC numbers (in the format XLOC_XXXXXX). Separate gene names or XLOC numbers with a space.", value = "HBB ACTB")
       ),
       conditionalPanel(
         condition = "input.inputtype == 'file'",
         fileInput("gene_list_file", label = "Gene list file")
       ),
-      checkboxInput("reps", label="Include replicates ?", value = FALSE),
-      submitButton(text="Warp speed, Mr. LaForge!")
+      checkboxInput("reps", label="Include replicates ? (Not relevant for Barplot)", value = FALSE),
+      submitButton(text="Plot!")
       ),
     sidebarPanel(strong("Gene information"),
                           textOutput("gsn"), 
