@@ -28,7 +28,8 @@ shinyUI(fluidPage(
       ),
     sidebarPanel(strong("Gene information"),
                           textOutput("gsn"), 
-                          textOutput("id"))
+                          textOutput("id"),
+                          uiOutput("sample_name_selector"))
   ),
   
   mainPanel(position = "right",

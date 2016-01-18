@@ -15,7 +15,7 @@ shinyServer(function(input, output) {
                                      gtfFile = input$cuffdiff_gtf,
                                      rebuild = input$rebuild)
     mylist<-unlist(strsplit(input$gene_list, " "))
-    getGenes(mycufflinksdata,mylist)
+    getGenes(mycufflinksdata,geneIdList=mylist, sampleIdList = input$sns)
     })
   
 # Now the CuffGeneSet is defined
@@ -37,6 +37,14 @@ shinyServer(function(input, output) {
        paste("Tracking ID : ", as.character(featureNames(my_genes())$tracking_id))
      }
    })
+   
+   output$sample_name_selector <- renderUI({
+     if (input$gene_id != "") {
+       sample_names_for_checkbox<-as.list(samples(my_genes())[1:16])
+       checkboxGroupInput("sns","Restrict plot to these conditions (uncheck all to reset)", as.list("A","B"))
+     }
+   }) 
+#     (length(samples(my_genes()))/length(unlist(strsplit(input$gene_list, " ")))
   
 # The main panel displays tabbed expression plot of the gene and isoforms
   output$heatmap <- renderPlot({

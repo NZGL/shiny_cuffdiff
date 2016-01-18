@@ -14,7 +14,7 @@ shinyServer(function(input, output) {
                                      genome = input$cuffdiff_genome, 
                                      gtfFile = input$cuffdiff_gtf,
                                      rebuild = input$rebuild)
-    getGenes(mycufflinksdata,input$gene_id)
+    getGenes(mycufflinksdata,geneIdList=input$gene_id, sampleIdList = input$sns)
     })
   
 # Now the CuffGeneSet is defined
@@ -62,6 +62,21 @@ shinyServer(function(input, output) {
      }
    })
    
+#     output$sample_names <- renderTable({
+#       if (input$gene_id != "") {
+#         as.data.frame(samples(my_gene()))
+#       }
+#     })
+   
+   output$sample_name_selector <- renderUI({
+     if (input$gene_id != "") {
+       sample_names_for_checkbox<-as.character(samples(my_gene()))
+       checkboxGroupInput("sns","Restrict plot to these conditions (uncheck all to reset)", sample_names_for_checkbox)
+       }
+     }) 
+   
+# Display tabbed outputs at the bottom of the page
+   
    output$rawplotdatagene <- renderTable({
      if (input$gene_id != "") {
        as.data.frame(fpkm(my_gene()))
@@ -74,7 +89,6 @@ shinyServer(function(input, output) {
      }
    })
    
-# Display the conditions that were examined   
    output$isoforminfo <- renderTable({
      if (input$gene_id != "") {
        as.data.frame(annotation(isoforms(my_gene())))
