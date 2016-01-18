@@ -15,7 +15,8 @@ shinyUI(fluidPage(
       textInput("gene_id", label = "Gene short name or XLOC number", value = "HBB"),
       radioButtons("plottype", label="Plot type", choices = list("Line" = 1, "Bar" = 2),
                    selected = 1),
-      checkboxInput("reps", label="Include replicates ?", value = FALSE)
+      checkboxInput("reps", label="Include replicates ?", value = FALSE),
+      submitButton(text = "Warp speed, Mr. LaForge!")
       ),
  
  
@@ -24,7 +25,8 @@ shinyUI(fluidPage(
                           textOutput("id"),
                           textOutput("iso"),
                           textOutput("tss"),
-                          textOutput("cds"))
+                          textOutput("cds"),
+                          uiOutput("sample_name_selector"))
   ),
   
   mainPanel(position = "right",

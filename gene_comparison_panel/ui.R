@@ -24,11 +24,13 @@ shinyUI(fluidPage(
         condition = "input.inputtype == 'file'",
         fileInput("gene_list_file", label = "Gene list file")
       ),
-      checkboxInput("reps", label="Include replicates ?", value = FALSE)
+      checkboxInput("reps", label="Include replicates ?", value = FALSE),
+      submitButton(text="Warp speed, Mr. LaForge!")
       ),
     sidebarPanel(strong("Gene information"),
                           textOutput("gsn"), 
-                          textOutput("id"))
+                          textOutput("id"),
+                          uiOutput("sample_name_selector"))
   ),
   
   mainPanel(position = "right",
