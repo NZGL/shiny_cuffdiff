@@ -39,12 +39,13 @@ shinyServer(function(input, output) {
    })
    
    output$sample_name_selector <- renderUI({
-     if (input$gene_id != "") {
-       sample_names_for_checkbox<-as.list(samples(my_genes())[1:16])
-       checkboxGroupInput("sns","Restrict plot to these conditions (uncheck all to reset)", as.list("A","B"))
+     if (input$gene_list != "") {
+       number_of_samples<-length(samples(my_genes()))/length(unlist(strsplit(input$gene_list, " ")))
+       sample_names_for_checkbox<-as.character(samples(my_genes())[1:number_of_samples])
+       checkboxGroupInput("sns","Restrict plot to these conditions (uncheck all to reset)", sample_names_for_checkbox)
      }
    }) 
-#     (length(samples(my_genes()))/length(unlist(strsplit(input$gene_list, " ")))
+#     ()
   
 # The main panel displays tabbed expression plot of the gene and isoforms
   output$heatmap <- renderPlot({

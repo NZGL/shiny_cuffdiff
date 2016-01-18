@@ -14,7 +14,7 @@ shinyServer(function(input, output) {
                                      genome = input$cuffdiff_genome, 
                                      gtfFile = input$cuffdiff_gtf,
                                      rebuild = input$rebuild)
-    getGenes(mycufflinksdata,geneIdList=input$gene_id, sampleIdList = input$sns)
+    getGenes(mycufflinksdata,geneIdList = input$gene_id, sampleIdList = input$sns)
     })
   
 # Now the CuffGeneSet is defined
