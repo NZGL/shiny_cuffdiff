@@ -1,5 +1,4 @@
-# shiny
-Shiny code (please put individual Shiny apps in informative subdirectories, and put a brief description in the README.md)
+# shiny_cuffdiff
 
 <b>gene_expression_panel:</b>
 
