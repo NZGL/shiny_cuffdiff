@@ -5,7 +5,7 @@ shinyUI(fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      textInput("cuffdiff_dir", label = "Full path to your Cuffdiff directory", value = "~/Dropbox/384/cuffdiff"),
+      textInput("cuffdiff_dir", label = "Full path to your Cuffdiff directory", value = ""),
       checkboxInput("rebuild", label
                     = "Rebuild cuffdiff database (very slow)", value = FALSE),
       conditionalPanel(
