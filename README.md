@@ -11,3 +11,11 @@ Takes a cuffdiff database (rebuilding if required) and displays information on a
 <b>transcriptome_panel_cuffdiff:</b>
 
 Takes a cuffdiff database (rebuilding if required) and displays transcriptome-level plots (Density, dispersion, SCV, MDS and PCA plots)
+
+<b>gene_expression_panel_DEseq:</b>
+
+Under construction
+
+<b>gene_comparison_panel_DEseq:</b>
+
+Under construction
