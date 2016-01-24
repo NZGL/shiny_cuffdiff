@@ -1,16 +1,4 @@
-# source("https://bioconductor.org/biocLite.R")
-# biocLite("cummeRbund")
-# install.packages("shiny")
-
-#This logic reads the list of packages required and installs them if they are missing. Required admin rights.
-list_of_packages <- c("shiny")
-new_packages <- list_of_packages[!(list_of_packages %in% installed.packages()[,"Package"])]
-if(length(new_packages)) install.packages(new_packages)
-
-invisible(lapply(list_of_packages, library, character.only = TRUE))
-
-library(cummeRbund)
-
+source("load_packages.R")
 
 shinyServer(function(input, output) {
 # This section defines a CuffSet which is used in the subsequent display steps
