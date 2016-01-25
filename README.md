@@ -18,8 +18,8 @@ Takes a cuffdiff database (rebuilding if required) and displays information on a
 
 <code>shiny::runApp('shiny_cuffdiff/gene_expression_panel_cuffdiff'))</code>
 
-Type the path to the cuffdiff directory /n
-Type the gene short name or XLOC number /n
+Type the path to the cuffdiff directory \n
+Type the gene short name or XLOC number \n
 Press "Plot"
 
 <b>gene_comparison_panel_cuffdiff:</b>
@@ -30,8 +30,8 @@ Takes a cuffdiff database (rebuilding if required) and displays information on a
 
 <code>shiny::runApp('shiny_cuffdiff/gene_comparison_panel_cuffdiff'))</code>
 
-Type the path to the cuffdiff directory /n
-Type the gene short names or XLOC numbers /n
+Type the path to the cuffdiff directory \n
+Type the gene short names or XLOC numbers \n
 Press "Plot"
 
 <b>Users:</b>Please note that, while this code is usable and may already be helpful when interrogating your gene expression results, it is a project at an early stage of development and there is a lot of error handling and code optimisation to be done.
@@ -44,8 +44,8 @@ Please take the time to read the current issues list, and feel free to create ne
 
 <b>Requirements (tested on these versions)</b>
 
-R version 3.2.2 (2015-08-14) -- "Fire Safety" /n
+R version 3.2.2 (2015-08-14) -- "Fire Safety" \n
 RStudio /n
-Shiny (this is installed during the startup process) /n
-cummeRbund (this is installed during the startup process) /n
+Shiny (this is installed during the startup process) \n
+cummeRbund (this is installed during the startup process) \n
 A valid cuffdiff directory (the cuffdiff.db can be rebuilt, but this is a very, very slow process, so this option is turned off by default)
