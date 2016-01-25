@@ -8,17 +8,17 @@ Participants (either users, testers, or code developers) are encouraged!
 
 Put simply, this code uses the outputs of the Tuxedo workflow (Tophat2 > Cufflinks > Cuffdiff) which is a cuffdiff SQL database file called cuffdiff.db. Then, using the R package cummeRbund, various plots are created on-the fly. 
 
-There are three subdirectories 
+There are three subdirectories, containing the server.R and ui.R files required for all Shiny apps, and a load_packages.R file to handle loading of required dependencies.
 
-<b>gene_expression_panel:</b>
+<b>gene_expression_panel_cuffdiff:</b>
 
 Takes a cuffdiff database (rebuilding if required) and displays information on a single named gene (as defined by the gene short name or the XLOC number). After the gene information is defined, gene expression plots can be restricted by sample.
 
-<b>gene_comparison_panel:</b>
+<b>gene_comparison_panel_cuffdiff:</b>
 
 Takes a cuffdiff database (rebuilding if required) and displays information on a set of named genes (as defined by the gene short name or the XLOC number). Displays a heatmap and a barplot. After the gene information is defined, gene expression plots can be restricted by sample.
 
-<b>transcriptome_panel:</b>
+<b>transcriptome_panel_cuffdiff:</b>
 
 Takes a cuffdiff database (rebuilding if required) and displays transcriptome-level plots (Density, dispersion, SCV, MDS and PCA plots)
 

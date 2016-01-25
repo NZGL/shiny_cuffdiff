@@ -1,9 +1,4 @@
-# source("https://bioconductor.org/biocLite.R")
-# biocLite("cummeRbund")
-# install.packages("shiny")
-library(shiny)
-library(cummeRbund)
-
+source("load_packages.R")
 
 shinyServer(function(input, output) {
 # This section defines a CuffGeneSet for a specific gene which is used in the subsequent display steps
