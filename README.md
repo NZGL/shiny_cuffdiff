@@ -2,7 +2,7 @@
 
 Welcome to the shiny_cuffdiff project.
 
-This project is at an early phase of development, but is under active development. We are also developing Shiny code to interrogate the outputs of other common gene expression / differential expression workflows (intially starting with DESeq2), which will be published as a separate repository.
+This project is at an early phase of development, but is under active development.
 
 Participants (either users, testers, or code developers) are encouraged!
 
@@ -54,3 +54,6 @@ RStudio <br />
 Shiny (this is installed during the startup process) <br />
 cummeRbund (this is installed during the startup process) <br />
 A valid cuffdiff directory (the cuffdiff.db can be rebuilt, but this is a very, very slow process, so this option is turned off by default)
+
+
+We are also developing Shiny code to interrogate the outputs of other common gene expression / differential expression workflows (intially starting with DESeq2), which will be published as a separate repository.
