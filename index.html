@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="shiny_cuffdiff : Shiny code to interrogate cuffdiff databases and make plots on the basis of gene names and XLOC numbers">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>shiny_cuffdiff</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/NZGL/shiny_cuffdiff">View on GitHub</a>
+
+          <h1 id="project_title">shiny_cuffdiff</h1>
+          <h2 id="project_tagline">Shiny code to interrogate cuffdiff databases and make plots on the basis of gene names and XLOC numbers</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/NZGL/shiny_cuffdiff/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/NZGL/shiny_cuffdiff/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="shiny_cuffdiff" class="anchor" href="#shiny_cuffdiff" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>shiny_cuffdiff</h1>
+
+<p>Welcome to the shiny_cuffdiff project.</p>
+
+<p>This project is at an early phase of development, but is under active development.</p>
+
+<p>Participants (either users, testers, or code developers) are encouraged!</p>
+
+<p>Put simply, this code uses the outputs of the Tuxedo workflow (Tophat2 &gt; Cufflinks &gt; Cuffdiff) which is a cuffdiff SQL database file called cuffdiff.db. Then, using the R package cummeRbund, various plots are created on-the fly. </p>
+
+<p>There are three subdirectories, containing the server.R and ui.R files required for all Shiny apps, and a load_packages.R file to handle loading dependencies.</p>
+
+<p><b>gene_expression_panel_cuffdiff:</b></p>
+
+<p>Takes a cuffdiff database (rebuilding if required) and displays information on a single named gene (as defined by the gene short name or the XLOC number). After the gene information is defined, gene expression plots can be restricted by sample.</p>
+
+<p><b>To use</b>: Open the server.R or ui.R file within RStudio. Click on the "Run App" button, or run from the R console:</p>
+
+<p><code>shiny::runApp('shiny_cuffdiff/gene_expression_panel_cuffdiff'))</code></p>
+
+<p>Type the path to the cuffdiff directory <br>
+Type the gene short name or XLOC number <br>
+Press "Plot"</p>
+
+<p><b>gene_comparison_panel_cuffdiff:</b></p>
+
+<p>Takes a cuffdiff database (rebuilding if required) and displays information on a set of named genes (as defined by the gene short name or the XLOC number). Displays a heatmap and a barplot. After the gene information is defined, gene expression plots can be restricted by sample.</p>
+
+<p><b>To use</b>: Open the server.R or ui.R file within RStudio. Click on the "Run App" button, or run from the R console:</p>
+
+<p><code>shiny::runApp('shiny_cuffdiff/gene_comparison_panel_cuffdiff'))</code></p>
+
+<p>Type the path to the cuffdiff directory <br>
+Type the gene short names or XLOC numbers <br>
+Press "Plot"</p>
+
+<p><b>Contributors and Users:</b> Welcome. We intend to use the Git branching model described in this post for development of this code.</p>
+
+<p><a href="http://nvie.com/posts/a-successful-git-branching-model/">http://nvie.com/posts/a-successful-git-branching-model/</a> (Thanks to Vincent Driessen for the post).</p>
+
+<p>Put simply, <br>
+..if you just want to try the code out but don't want to contribute to the code, clone the <b>master</b> branch <br>
+..if you want to contribute to the code, clone the <b>develop</b> branch, and please read the above post.</p>
+
+<p><b>Users:</b> Please note that, while this code is usable and may already be helpful when interrogating your gene expression results, it is a project at an early stage of development and there is a lot of error handling and code optimisation to be done.</p>
+
+<p><b>Contributors:</b> Welcome and thanks! Please take the time to read the current issues list, and feel free to create new issues or suggestions for improvements.</p>
+
+<p><b>Requirements (tested on these versions)</b></p>
+
+<p>R version 3.2.2 (2015-08-14) -- "Fire Safety" <br>
+RStudio (open source edition) <br>
+R package: Shiny version    0.13.0 (this is installed during the startup process) <br>
+R package: cummeRbund version 2.12.0 (this is installed during the startup process) <br>
+A valid cuffdiff directory (the cuffdiff.db can be rebuilt, but this is a very, very slow process, so this option is turned off by default)</p>
+
+<p>We are also developing Shiny code to interrogate the outputs of other common gene expression / differential expression workflows (intially starting with DESeq2), which will be published as a separate repository.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">shiny_cuffdiff maintained by <a href="https://github.com/NZGL">NZGL</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
