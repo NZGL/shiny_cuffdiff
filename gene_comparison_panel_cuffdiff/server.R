@@ -43,12 +43,14 @@ shinyServer(function(input, output) {
 #     ()
   
 # The main panel displays tabbed expression plot of the gene and isoforms
+   
+   # Display heatmap
   output$heatmap <- renderPlot({
     if (input$gene_list != "") {
         csHeatmap(my_genes(), replicates = input$reps)
     }
     })
-  
+  # Display barplot
   output$barplot <- renderPlot({
     if (input$gene_list != "") {
       expressionBarplot(my_genes(), replicates = input$reps)
