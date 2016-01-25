@@ -1,21 +1,33 @@
-# shiny_genes
+# shiny_cuffdiff
 
-<b>gene_expression_panel_cuffdiff:</b>
+Welcome to the shiny_cuffdiff project.
+
+This project is at an early phase of development, but is under active development. We are also developing Shiny code to interrogate the outputs of other common gene expression / differential expression workflows (intially starting with DESeq2), which will be published as a separate repository.
+
+Participants (either users, testers, or code developers) are encouraged!
+
+Put simply, this code uses the outputs of the Tuxedo workflow (Tophat2 > Cufflinks > Cuffdiff) which is a cuffdiff SQL database file called cuffdiff.db. Then, using the R package cummeRbund, various plots are created on-the fly. 
+
+There are three subdirectories 
+
+<b>gene_expression_panel:</b>
 
 Takes a cuffdiff database (rebuilding if required) and displays information on a single named gene (as defined by the gene short name or the XLOC number). After the gene information is defined, gene expression plots can be restricted by sample.
 
-<b>gene_comparison_panel_cuffdiff:</b>
+<b>gene_comparison_panel:</b>
 
 Takes a cuffdiff database (rebuilding if required) and displays information on a set of named genes (as defined by the gene short name or the XLOC number). Displays a heatmap and a barplot. After the gene information is defined, gene expression plots can be restricted by sample.
 
-<b>transcriptome_panel_cuffdiff:</b>
+<b>transcriptome_panel:</b>
 
 Takes a cuffdiff database (rebuilding if required) and displays transcriptome-level plots (Density, dispersion, SCV, MDS and PCA plots)
 
-<b>gene_expression_panel_DEseq:</b>
 
-Under construction
 
-<b>gene_comparison_panel_DEseq:</b>
+<b>Users:</b>Please note that, while this code is usable and may already be helpful when interrogating your gene expression results, it is a project at an early stage of development and there is a lot of error handling and code optimisation to be done.
 
-Under construction
+<b>Contributors:</b> Welcome. We intend to use the Git branching model described in this post for development of this code.
+
+http://nvie.com/posts/a-successful-git-branching-model/
+
+Please take the time to read the current issues list, and feel free to create new issues or suggestions for improvements.
