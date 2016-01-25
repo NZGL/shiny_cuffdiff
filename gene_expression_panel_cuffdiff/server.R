@@ -49,7 +49,7 @@ shinyServer(function(input, output) {
      }
    })
 
-# Display the number of cDNAs
+# Display the number of cDNAs (Clumsy error handling here, as many cuffdiff databases will not have this information)
    
    output$cds <- renderText({
      if (input$gene_id != "") {
@@ -57,11 +57,8 @@ shinyServer(function(input, output) {
      }
    })
    
-#     output$sample_names <- renderTable({
-#       if (input$gene_id != "") {
-#         as.data.frame(samples(my_gene()))
-#       }
-#     })
+   # Obtain the sample names from the cuffdiff database, and use them in a dynamic UI element
+   # This allows the plots to be restricted by sample and re-plotted
    
    output$sample_name_selector <- renderUI({
      if (input$gene_id != "") {
@@ -71,26 +68,28 @@ shinyServer(function(input, output) {
      }) 
    
 # Display tabbed outputs at the bottom of the page
+
+   # Data frame of FPKM values
    
    output$rawplotdatagene <- renderTable({
      if (input$gene_id != "") {
        as.data.frame(fpkm(my_gene()))
      }
    })
-   
+   # Data frame of FPKM values by isoform
    output$rawplotdataiso <- renderTable({
      if (input$gene_id != "") {
        as.data.frame(fpkm(isoforms(my_gene())))
      }
    })
-   
+   # Names of isoforms
    output$isoforminfo <- renderTable({
      if (input$gene_id != "") {
        as.data.frame(annotation(isoforms(my_gene())))
      }
    })
-  
-# The main panel displays tabbed expression plot of the gene and isoforms
+   # Expression plot of the primary isoform only
+   
   output$expression_plot_primary_isoform <- renderPlot({
     if (input$gene_id != "") {
       if (input$plottype == 1) {
@@ -101,6 +100,7 @@ shinyServer(function(input, output) {
       }
     }
     })
+  # Expression plot of all isoforms
   
   output$expression_plot_all_isoforms <- renderPlot({
     if (input$gene_id != "") {
@@ -112,6 +112,7 @@ shinyServer(function(input, output) {
       }
     }
   })
+  # Expression plot of all TSS groups
   
   output$expression_plot_all_TSS <- renderPlot({
     if (input$gene_id != "") {
@@ -123,6 +124,7 @@ shinyServer(function(input, output) {
       }
     }
   })
+  # Expression plot of all CDS groups: again, this will often fail since this information is often not in cuffdiff databases
   
   output$expression_plot_all_CDS <- renderPlot({
     if (input$gene_id != "") {
