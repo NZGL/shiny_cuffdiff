@@ -12,7 +12,7 @@ shinyUI(fluidPage(
         textInput("cuffdiff_gtf", label = "Full path to your GTF file (optional, but recommended)"),
         textInput("cuffdiff_genome", label = "Genome name (Optional, free text)")
       ),
-      textInput("gene_id", label = "Gene short name or XLOC number", value = "HBB"),
+      textInput("gene_id", label = "Gene short name or XLOC number", value = ""),
       radioButtons("plottype", label="Plot type", choices = list("Line" = 1, "Bar" = 2),
                    selected = 1),
       checkboxInput("reps", label="Include replicates ?", value = FALSE),

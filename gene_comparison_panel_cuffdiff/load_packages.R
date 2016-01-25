@@ -4,7 +4,7 @@
 source("https://bioconductor.org/biocLite.R")
 
 list_of_R_packages <- c("shiny")
-list_of_bioconductor_packages <- c("cummeRbund", "limma")
+list_of_bioconductor_packages <- c("cummeRbund")
 
 new_R_packages <- list_of_R_packages[!(list_of_R_packages %in% installed.packages()[,"Package"])]
 if(length(new_R_packages)) install.packages(new_R_packages)

@@ -18,7 +18,7 @@ shinyUI(fluidPage(
                      "File" = "file")),
       conditionalPanel(
         condition = "input.inputtype == 'list'",
-        textInput("gene_list", label = "Gene list: Use the gene short name (e.g. ACTB) or XLOC numbers (in the format XLOC_XXXXXX). Separate gene names or XLOC numbers with a space.", value = "HBB ACTB")
+        textInput("gene_list", label = "Gene list: Use the gene short name (e.g. ACTB) or XLOC numbers (in the format XLOC_XXXXXX). Separate gene names or XLOC numbers with a space.", value = "")
       ),
       conditionalPanel(
         condition = "input.inputtype == 'file'",
