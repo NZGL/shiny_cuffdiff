@@ -34,11 +34,20 @@ Type the path to the cuffdiff directory <br />
 Type the gene short names or XLOC numbers <br />
 Press "Plot"
 
+
+<b>Contributors and Users:</b> Welcome. We intend to use the Git branching model described in this post for development of this code.
+
+http://nvie.com/posts/a-successful-git-branching-model/ (Thanks to Vincent Driessen for the post).
+
+Put simply, <br />
+..if you just want to try the code out but don't want to contribute to the code, clone off the <b>master</b> branch
+..if you want to contribute to the code, clone off the <b>develop</b> branch
+
 <b>Users:</b>Please note that, while this code is usable and may already be helpful when interrogating your gene expression results, it is a project at an early stage of development and there is a lot of error handling and code optimisation to be done.
 
-<b>Contributors:</b> Welcome. We intend to use the Git branching model described in this post for development of this code.
+<b>Contributors:</b> 
 
-http://nvie.com/posts/a-successful-git-branching-model/
+Welcome and thanks!
 
 Please take the time to read the current issues list, and feel free to create new issues or suggestions for improvements.
 
