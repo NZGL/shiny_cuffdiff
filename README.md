@@ -50,7 +50,7 @@ Put simply, <br />
 <b>Requirements (tested on these versions)</b>
 
 R version 3.2.2 (2015-08-14) -- "Fire Safety" <br />
-RStudio <br />
+RStudio (open source edition) <br />
 R package: Shiny version	0.13.0 (this is installed during the startup process) <br />
 R package: cummeRbund version 2.12.0 (this is installed during the startup process) <br />
 A valid cuffdiff directory (the cuffdiff.db can be rebuilt, but this is a very, very slow process, so this option is turned off by default)
