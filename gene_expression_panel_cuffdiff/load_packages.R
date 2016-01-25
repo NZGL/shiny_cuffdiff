@@ -1,7 +1,7 @@
 #The following code will download, install and load all the required packages for the R script. Place R packages in the list of R
 # packages, and bioconductor packages in the list of biocondictor packages.
 
-source("https://bioconductor.org/biocLite.R")
+source("http://bioconductor.org/biocLite.R")
 
 list_of_R_packages <- c("shiny")
 list_of_bioconductor_packages <- c("cummeRbund")
