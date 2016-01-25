@@ -41,7 +41,7 @@ http://nvie.com/posts/a-successful-git-branching-model/ (Thanks to Vincent Dries
 
 Put simply, <br />
 ..if you just want to try the code out but don't want to contribute to the code, clone the <b>master</b> branch <br />
-..if you want to contribute to the code, clone the <b>develop</b> branch <br />, and please read the above post.
+..if you want to contribute to the code, clone the <b>develop</b> branch, and please read the above post.
 
 <b>Users:</b> Please note that, while this code is usable and may already be helpful when interrogating your gene expression results, it is a project at an early stage of development and there is a lot of error handling and code optimisation to be done.
 
