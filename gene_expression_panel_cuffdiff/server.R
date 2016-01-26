@@ -4,19 +4,21 @@ library(shinyFiles)
 
 shinyServer(function(input, output, session) {
   
-  volumes <- getVolumes()
-  shinyFileChoose(input, 'cuffData_file', roots=volumes, session=session, restrictions=system.file(package='base'))
-  output$cuffData_file_path <- renderPrint({parseFilePaths(volumes, input$cuffData_file)})
-  shinyDirChoose(input, 'cuffdiff_directory', roots=volumes, session=session, restrictions=system.file(package='base'))
-  output$cuffdiff_directory_path <- renderPrint({parseDirPath(volumes, input$cuffdiff_directory)
-
+  my_gene <- reactive({
+    mycufflinksdata <- readCufflinks(dbFile = "~/Dropbox/384/cuffdiff/cuffData.db")
+    getGenes(mycufflinksdata,geneIdList = input$gene_id, sampleIdList = input$sns)
+  })
+  
+#   volumes <- getVolumes()
+#   shinyFileChoose(input, 'cuffData_file', roots=volumes, session=session, restrictions=system.file(package='base'))
+#   output$cuffData_file_path <- renderPrint({parseFilePaths(volumes, input$cuffData_file)})
+#   shinyDirChoose(input, 'cuffdiff_directory', roots=volumes, session=session, restrictions=system.file(package='base'))
+#   output$cuffdiff_directory_path <- renderPrint({parseDirPath(volumes, input$cuffdiff_directory)
+#   mydb <- output$cuffData_file_path
 # This section defines a CuffGeneSet for a specific gene which is used in the subsequent display steps
 # This is to avoid re-loading the CuffGeneSet many times
   
-  my_gene <- reactive({
-    mycufflinksdata <- readCufflinks(dbFile = "the file path here")
-    getGenes(mycufflinksdata,geneIdList = input$gene_id, sampleIdList = input$sns)
-    })
+
   
   })
 #   
