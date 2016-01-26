@@ -13,7 +13,7 @@ shinyUI(fluidPage(
         textInput("cuffdiff_gtf", label = "Full path to your GTF file (optional, but recommended)"),
         textInput("cuffdiff_genome", label = "Genome name (Optional, free text)")
       ),
-      radioButtons("inputtype", "Input type:",
+      radioButtons("inputtype", "Input type (File input not functional, to be added soon):",
                    c("List" = "list",
                      "File" = "file")),
       conditionalPanel(
