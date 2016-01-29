@@ -1,6 +1,7 @@
 #!/bin/R
-library(shiny)
-library(shinyFiles)
+#library(shiny)
+#library(shinyFiles)
+source("load_packages.R")
 
 shinyUI(fluidPage(
   titlePanel("Gene expression plot"),
@@ -13,13 +14,19 @@ shinyUI(fluidPage(
                        inline=TRUE),
           conditionalPanel(
             condition = "input.db_status == 'TRUE'",
-            helpText("What to do when you've got a cuffData.db file")
-         #   shinyFilesButton('cuffData_file', 'File select', 'Please select a file', FALSE)
+            helpText("What to do when you've got a cuffData.db file"),
+            
+            isolate(
+              shinyFilesButton('cuffData_file', 'File select', 'Please select a file', buttonType = "default", FALSE)
+              )
           ),
           conditionalPanel(
             condition = "input.db_status == 'FALSE'",
-            helpText("What to do when you don't got a cuffData.db file")
-         #   shinyDirButton("cuffdiff_directory", "Folder select", "Select your cuffdiff directory", FALSE)
+            helpText("What to do when you don't got a cuffData.db file"),
+            
+            isolate(
+                shinyDirButton("cuffdiff_directory", "Folder select", "Select your cuffdiff directory", buttonType = "default", FALSE)
+            )
             
           ),
           textInput("gene_id", label = "Gene short name or XLOC number", value = ""),
@@ -30,7 +37,7 @@ shinyUI(fluidPage(
   mainPanel(
     position = "right",
     verbatimTextOutput('cuffData_file_path'),
-    verbatimTextOutput('mydb'),
+    verbatimTextOutput('cuffdiff_directory_path'),
         tabsetPanel(
           tabPanel("Primary isoform",plotOutput("expression_plot_primary_isoform")),
           tabPanel("All isoforms", plotOutput("expression_plot_all_isoforms")),
