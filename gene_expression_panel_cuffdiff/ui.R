@@ -36,8 +36,6 @@ shinyUI(fluidPage(
     ),
   mainPanel(
     position = "right",
-    verbatimTextOutput('cuffData_file_path'),
-    verbatimTextOutput('cuffdiff_directory_path'),
         tabsetPanel(
           tabPanel("Primary isoform",plotOutput("expression_plot_primary_isoform")),
           tabPanel("All isoforms", plotOutput("expression_plot_all_isoforms")),

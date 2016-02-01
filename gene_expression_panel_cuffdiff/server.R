@@ -1,38 +1,29 @@
 source("load_packages.R")
 #library(shiny)
-#library(shinyFiles)
+library(shinyFiles)
 
 shinyServer(function(input, output, session) {
   
-   
   
    volumes <- getVolumes()
    
    isolate(shinyFileChoose(input, 'cuffData_file', updateFreq = 2000, roots=volumes, session=session, restrictions=system.file(package='base')))
-   
-   output$cuffData_file_path <- renderPrint({parseFilePaths(volumes, input$cuffData_file)})
-   
+  
    isolate(shinyDirChoose(input, 'cuffdiff_directory', updateFreq = 2000, roots=volumes, session=session, restrictions=system.file(package='base')))
-   
-   output$cuffdiff_directory_path <- renderPrint({parseDirPath(volumes, input$cuffdiff_directory)})
-   
-
    
     
 # This section defines a CuffGeneSet for a specific gene which is used in the subsequent display steps
 # This is to avoid re-loading the CuffGeneSet many times
   
    my_gene <- reactive({
-     #mycufflinksdata <- readCufflinks(dbFile = "/Users/astu029/Downloads/cuffData.db")
-       temp <- unlist(strsplit(as.character(input$cuffdiff_directory), "/"))
+   
+        cuffdiff_database <- parseFilePaths(volumes, input$cuffData_file)
+        
+        #readCufflinks only accepts relative file paths, so we set the working directory to the folder that contains the database
+        setwd(dirname(as.character(cuffdiff_database$datapath)))
+        mycufflinksdata <- readCufflinks(dbFile = cuffdiff_database$name)
        
-       cuffdiff_dir_path <- paste(temp[1:length(temp)-1], collapse = "/")
-       cuffdiff_db_name <- temp[length(temp)]
- 
-    mycufflinksdata <- readCufflinks(dir = cuffdiff_dir_path, dbFile = cuffdiff_db_name)
-    #mycufflinksdata <- readCufflinks(dir = "data", dbFile = "cuffData.db")   
-
-     getGenes(mycufflinksdata,geneIdList = input$gene_id, sampleIdList = input$sns)
+     getGenes(mycufflinksdata, geneIdList = input$gene_id, sampleIdList = input$sns)
    })
   
 #  })
