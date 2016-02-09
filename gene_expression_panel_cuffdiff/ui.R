@@ -24,12 +24,14 @@ shinyUI(fluidPage(
             condition = "input.db_status == 'FALSE'",
             helpText("What to do when you don't got a cuffData.db file"),
             
-            isolate(
+            
                 shinyDirButton("cuffdiff_directory", "Folder select", "Select your cuffdiff directory", buttonType = "default", FALSE)
-            )
+            
             
           ),
+          
           textInput("gene_id", label = "Gene short name or XLOC number", value = ""),
+          actionButton("submit", "Submit"),
           radioButtons("plottype", label="Plot type", choices = list("Line" = 1, "Bar" = 2),
                        selected = 1),
           checkboxInput("reps", label="Include replicates ?", value = FALSE)
