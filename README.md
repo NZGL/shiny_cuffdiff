@@ -8,7 +8,7 @@ Participants (either users, testers, or code developers) are encouraged!
 
 Put simply, this code uses the outputs of the Tuxedo workflow (Tophat2 > Cufflinks > Cuffdiff) which is a cuffdiff SQL database file called cuffData.db. Then, using the R package cummeRbund, various plots are created on-the fly. 
 
-There are three subdirectories, containing the server.R and ui.R files required for all Shiny apps, and a load_packages.R file to handle loading dependencies.
+There are two subdirectories, containing the server.R and ui.R files required for all Shiny apps, and a load_packages.R file to handle loading dependencies.
 
 <b>gene_expression_panel_cuffdiff:</b>
 
