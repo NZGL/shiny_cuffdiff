@@ -36,7 +36,8 @@ shinyUI(fluidPage(
   mainPanel(position = "right",
     tabsetPanel(
       tabPanel("Heatmap",plotOutput("heatmap")),
-      tabPanel("Barplot", plotOutput("barplot"))
+      tabPanel("Barplot", plotOutput("barplot")),
+      tabPanel("FAQ", HTML(faqOutput()))
     )
 )))
 
