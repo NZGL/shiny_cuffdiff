@@ -1,4 +1,6 @@
 #!/bin/R
+source("faq.R")
+
 
 shinyUI(fluidPage(
   titlePanel("Gene expression plot"),
@@ -37,7 +39,8 @@ shinyUI(fluidPage(
       tabPanel("CDS groups", plotOutput("expression_plot_all_CDS")),
       tabPanel("Raw plot data (Gene)", tableOutput("rawplotdatagene")),
       tabPanel("Raw plot data (Isoforms)", tableOutput("rawplotdataiso")),
-      tabPanel("Isoform information", tableOutput("isoforminfo"))
+      tabPanel("Isoform information", tableOutput("isoforminfo")),
+      tabPanel("FAQ", HTML(faqOutput()))
     )
 )))
 
